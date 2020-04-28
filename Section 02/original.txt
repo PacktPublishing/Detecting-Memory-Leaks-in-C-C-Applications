@@ -1,0 +1,21 @@
+#include <new>
+#include <iostream>
+
+#pragma region Allocator //Visual studio only
+void * operator new(size_t size){
+	std::cout << "new" << std::endl ;
+	return malloc(size) ;
+}
+void operator delete(void *p)noexcept{
+	std::cout << "delete" << std::endl ;
+	free(p) ;
+}
+void * operator new[](size_t size){
+	std::cout << "new[]" << std::endl ;
+	return malloc(size) ;
+}
+void operator delete[](void *p)noexcept{
+	std::cout << "delete[]" << std::endl ;
+	free(p) ;
+}
+#pragma endregion  //Visual studio only
